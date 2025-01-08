@@ -11,9 +11,9 @@
   "scripts": {
     "test-all": "node test/test-all.js",
     "test-quick": "node test/test-quick.js",
-    "test-browser": "node test/browser-quick-start.mjs /test/browser/index.html",
-    "bench": "node test/benchmark/bench.js",
-    "bench-browser": "node test/browser-quick-start.mjs /test/benchmark/bench.html"
+    "test-browser": "node test/browser-quick-start.mjs /test/index.html",
+    "bench": "node test/bench.js",
+    "bench-browser": "node test/browser-quick-start.mjs /test/runJs.html?file=bench.js"
   },
   "repository": {
     "type": "git",

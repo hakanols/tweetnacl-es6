@@ -1,14 +1,7 @@
-import nacl from './../../nacl-fast-es.js';
-import * as helpers from './helpers.js';
-const log = (typeof window === "undefined") ? new helpers.NodeLogger() : new helpers.BrowserLogger();
+import nacl from '../nacl-fast-es.js';
+import util from './helpers/nacl-util.js'
 
 if (!nacl) throw new Error('nacl not loaded');
-
-function decodeUTF8(s) {
-  var i, d = unescape(encodeURIComponent(s)), b = new Uint8Array(d.length);
-  for (i = 0; i < d.length; i++) b[i] = d.charCodeAt(i);
-  return b;
-}
 
 var getTime = (function() {
   if (typeof performance !== 'undefined') {
@@ -89,7 +82,7 @@ function report(name, results) {
   var mibPerSecond = results.bytesPerSecond
       ? (results.bytesPerSecond / 1024 / 1024).toFixed(2) + ' MiB/s'
       : '';
-  log.print(
+  console.log(
     pad(name, 25, true) + ' ' +
     pad(ops, 20) + ' ' +
     pad(msPerOp, 20) + ' ' +
@@ -166,8 +159,8 @@ function box_seal_open_benchmark() {
       pk2 = new Uint8Array(32), sk2 = new Uint8Array(32);
   nacl.lowlevel.crypto_box_keypair(pk1, sk1);
   nacl.lowlevel.crypto_box_keypair(pk2, sk2);
-  var nonce = decodeUTF8('123456789012345678901234');
-  var msg = decodeUTF8((new Array(1024)).join('a'));
+  var nonce = util.decodeUTF8('123456789012345678901234');
+  var msg = util.decodeUTF8((new Array(1024)).join('a'));
   var box = null;
 
   report('box 1K', benchmark(function() {
@@ -183,7 +176,7 @@ function sign_open_benchmark() {
   var k = nacl.sign.keyPair();
   var sk = k.secretKey;
   var pk = k.publicKey;
-  var msg = decodeUTF8((new Array(128)).join('a'));
+  var msg = util.decodeUTF8((new Array(128)).join('a'));
   var sm;
 
   report('sign', benchmark(function() {

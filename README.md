@@ -287,25 +287,33 @@ different lengths, or their contents differ.
 ### Testing
 ----------
 
-To run test in NodeJS version 14:
+#### To run test in NodeJS version 14:
 
     $ npm run test-all
 
     $ npm run test-quick
 
-To run in browser:
+#### To run in browser:
 
-[browser test](https://hakanols.github.io/tweetnacl-es6/test/browser/index.html)
+[browser test](https://hakanols.github.io/tweetnacl-es6/test/index.html)
+
+Run in browser local hosted:
+
+    $ npm run test-browser
 
 ### Benchmarking
 
-To run benchmarks in NodeJS version 14:
+#### To run benchmarks in NodeJS version 14:
 
     $ npm run bench
 
-To run in browser:
+#### To run in browser:
 
-[browser benchmarks](https://hakanols.github.io/tweetnacl-es6/test/benchmark/bench.html)
+[browser benchmarks](https://hakanols.github.io/tweetnacl-es6/test/runJs.html?file=bench.js)
+
+Run in browser local hosted:
+
+    $ npm run bench-browser
 
 Contributors
 ------------
