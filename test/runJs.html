@@ -72,6 +72,7 @@
             }
 
             async function run(){
+                logger.innerHTML = ''
                 const queryString = window.location.search;
                 const urlParams = new URLSearchParams(queryString)
                 if (!urlParams.has('file')){
@@ -109,10 +110,7 @@
                     "Tomato");                
             });
 
-            window.onload = async function(){
-                logger.innerHTML = ''
-                await run();
-            }
+            await run();
 
         </script>
     </head>
